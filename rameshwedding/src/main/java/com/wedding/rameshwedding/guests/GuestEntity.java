@@ -1,8 +1,12 @@
 package com.wedding.rameshwedding.guests;
 
+import lombok.Data;
+import lombok.NonNull;
+
 import javax.persistence.*;
 import java.util.Date;
 
+@Data
 @Entity
 @Table(name="guest")
 public class GuestEntity {
@@ -13,36 +17,6 @@ public class GuestEntity {
    private String guestName;
    private Boolean withFamily;
    private Date invationDate;
+   private String relation;
 
-   public String getGuestName() {
-      return guestName;
-   }
-
-   public void setGuestName(String guestName) {
-      this.guestName = guestName;
-   }
-
-   public Boolean getWithFamily() {
-      return withFamily;
-   }
-
-   public void setWithFamily(Boolean withFamily) {
-      this.withFamily = withFamily;
-   }
-
-   public Date getInvationDate() {
-      return invationDate;
-   }
-
-   public void setInvationDate(Date invationDate) {
-      this.invationDate = invationDate;
-   }
-
-   public Long getId() {
-      return id;
-   }
-
-   public void setId(Long id) {
-      this.id = id;
-   }
 }

@@ -1,19 +1,17 @@
 package com.wedding.rameshwedding.guests;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/guest")
 public class GuestsController {
 
 
-    GuestsService guestsService;
+    private GuestsService guestsService;
 
     public GuestsController(GuestsService guestsService) {
         this.guestsService = guestsService;
@@ -21,13 +19,15 @@ public class GuestsController {
 
 
     @PostMapping("/registerGuest")
-    public ResponseEntity registerGuest(@RequestParam String guestName,@RequestParam Boolean withFamily){
+    public ResponseEntity registerGuest(@RequestBody GuestsDTO.GuestRequest requestDTO){
 
-        var response=guestsService.registerGuest(guestName,withFamily);
+        var response=guestsService.registerGuest(requestDTO);
 
 
-        return ResponseEntity.ok(response);
+        return new ResponseEntity(response,HttpStatus.CREATED);
+
     }
+
 //
 //    @GetMapping("/geGuest/{guestId}")
 //    public ResponseEntity<?> getGuestById(){
