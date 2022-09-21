@@ -23,7 +23,6 @@ public class GuestsController {
 
         var response=guestsService.registerGuest(requestDTO);
 
-
         return new ResponseEntity(response,HttpStatus.CREATED);
 
     }
