@@ -22,5 +22,7 @@ public class GuestsDTO {
         private Boolean withFamily;
         private String relation;
         private Date invitationDate;
+
+
     }
 }

@@ -1,6 +1,7 @@
 package com.wedding.rameshwedding;
 
 import com.wedding.rameshwedding.guests.GuestMapper;
+import org.modelmapper.ModelMapper;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -15,6 +16,11 @@ public class RameshweddingApplication {
     @Bean
     public GuestMapper getMapper(){
         return new GuestMapper();
+    }
+
+    @Bean
+    public ModelMapper getModelMapper(){
+        return new ModelMapper();
     }
 
 

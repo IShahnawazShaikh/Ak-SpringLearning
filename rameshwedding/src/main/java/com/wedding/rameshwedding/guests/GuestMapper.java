@@ -13,7 +13,7 @@ public class GuestMapper {
         guestEntity.setGuestName(guestRequestDTO.getGuestName());
         guestEntity.setWithFamily(guestRequestDTO.getWithFamily());
         guestEntity.setRelation(guestRequestDTO.getRelation());
-        guestEntity.setInvationDate(new Date());
+        guestEntity.setInvitationDate(new Date());
         return guestEntity;
     }
 
@@ -23,7 +23,7 @@ public class GuestMapper {
         response.setGuestName(savedGuest.getGuestName());
         response.setWithFamily(savedGuest.getWithFamily());
         response.setRelation(savedGuest.getRelation());
-        response.setInvitationDate(savedGuest.getInvationDate());
+        response.setInvitationDate(savedGuest.getInvitationDate());
         return response;
 
     }

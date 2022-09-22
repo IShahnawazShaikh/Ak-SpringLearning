@@ -20,21 +20,18 @@ public class GuestsController {
 
     @PostMapping("/registerGuest")
     public ResponseEntity registerGuest(@RequestBody GuestsDTO.GuestRequest requestDTO){
-
         var response=guestsService.registerGuest(requestDTO);
-
         return new ResponseEntity(response,HttpStatus.CREATED);
-
+    }
+    @GetMapping("/getGuest/{guestId}")
+    public ResponseEntity<?> getGuestById(@PathVariable Long guestId){
+        var response=guestsService.findGuestById(guestId);
+        return response==null ? new ResponseEntity("Guest Not Found with the Id: "+guestId,HttpStatus.NOT_FOUND)
+                       : ResponseEntity.ok(response);
     }
 
-//
-//    @GetMapping("/geGuest/{guestId}")
-//    public ResponseEntity<?> getGuestById(){
-//        return null;
-//    }
-//
-//    @GetMapping("/getAllGuest")
-//    public ResponseEntity<?> getAllGuest(){
-//        return null;
-//    }
+    @GetMapping("/getAllGuest")
+    public ResponseEntity<?> getAllGuest(){
+        return null;
+    }
 }

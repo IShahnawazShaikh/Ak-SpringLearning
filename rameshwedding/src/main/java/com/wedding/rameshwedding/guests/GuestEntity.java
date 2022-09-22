@@ -16,7 +16,7 @@ public class GuestEntity {
    Long id;
    private String guestName;
    private Boolean withFamily;
-   private Date invationDate;
+   private Date invitationDate;
    private String relation;
 
 }

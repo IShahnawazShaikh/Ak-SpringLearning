@@ -1,10 +1,12 @@
 package com.wedding.rameshwedding.guests;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Optional;
 
 @Service
 public class GuestsService {
@@ -13,8 +15,11 @@ public class GuestsService {
 
     private GuestMapper guestMapper;
 
-    public GuestsService(GuestMapper guestMapper) {
+    private ModelMapper modelMapper;
+
+    public GuestsService(GuestMapper guestMapper, ModelMapper modelMapper) {
         this.guestMapper = guestMapper;
+        this.modelMapper = modelMapper;
     }
 
     public GuestsDTO.GuestResponse registerGuest(GuestsDTO.GuestRequest guestRequestDTO) {
@@ -24,5 +29,17 @@ public class GuestsService {
         return response;
     }
 
+
+    public GuestsDTO.GuestResponse findGuestById(Long guestId) {
+
+        Optional<GuestEntity> entityOptional=guestsRepository.findById(guestId);
+
+        if(entityOptional.isPresent()){
+            GuestEntity entity=entityOptional.get();
+            var response=modelMapper.map(entity,GuestsDTO.GuestResponse.class);
+            return response;
+        }
+        return null;
+    }
 }
 
