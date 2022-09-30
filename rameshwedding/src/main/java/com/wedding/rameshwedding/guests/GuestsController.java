@@ -17,7 +17,6 @@ public class GuestsController {
         this.guestsService = guestsService;
     }
 
-
     @PostMapping("/registerGuest")
     public ResponseEntity registerGuest(@RequestBody GuestsDTO.GuestRequest requestDTO){
         var response=guestsService.registerGuest(requestDTO);
@@ -28,6 +27,12 @@ public class GuestsController {
         var response=guestsService.findGuestById(guestId);
         return response==null ? new ResponseEntity("Guest Not Found with the Id: "+guestId,HttpStatus.NOT_FOUND)
                        : ResponseEntity.ok(response);
+    }
+
+    @GetMapping("/guestByFamily/{withOrWithoutFamily}")
+    public ResponseEntity<?> guestByWithOrWihoutFamily(@PathVariable Boolean withOrWithoutFamily){
+        var response=guestsService.guestByWithOrWihoutFamily(withOrWithoutFamily);
+        return ResponseEntity.ok(response);
     }
 
     @GetMapping("/getAllGuest")
