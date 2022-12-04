@@ -6,7 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-@Controller
+@RestController
 @RequestMapping("/guest")
 public class GuestsController {
 
@@ -35,6 +35,10 @@ public class GuestsController {
         return ResponseEntity.ok(response);
     }
 
+    @GetMapping("/testApi")
+    public ResponseEntity testApi(){
+        return ResponseEntity.ok("Test API Succesfully Return");
+    }
     @GetMapping("/getAllGuest")
     public ResponseEntity<?> getAllGuest(){
         return null;
