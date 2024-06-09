@@ -10,6 +10,11 @@ import javax.servlet.http.HttpServletRequest;
 public class JWTAuthenticationConverter implements AuthenticationConverter {
     @Override
     public Authentication convert(HttpServletRequest request) {
+        var headerRequest=request.getHeader("Authorization");
+        if(headerRequest!=null && headerRequest.startsWith("Bearer ")){
+            var token=headerRequest.substring(7);
+
+        }
         return null;
     }
 }

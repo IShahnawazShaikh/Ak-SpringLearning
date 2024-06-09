@@ -35,3 +35,20 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
                 .addFilterBefore(authenticationFilter,AnonymousAuthenticationFilter.class);
     }
 }
+
+/** CORS [Cross-Origin Resource Sharing]   ***/
+
+
+
+/****************
+   CSRF [Cross-Site Request Forgery]
+
+   userLogin/login-form
+   server A [id]
+
+   User B ->
+     username
+     password
+
+
+*******************/
